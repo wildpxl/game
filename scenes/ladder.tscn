@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnliho51q157d"]
+
+[ext_resource type="Script" path="res://scripts/ladder.gd" id="1_w4v4d"]
+[ext_resource type="FontFile" uid="uid://cyvd36htah376" path="res://art/FreePixel.ttf" id="2_sn1lu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgbo1"]
+size = Vector2(28.5, 20)
+
+[node name="Ladder" type="Area2D"]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_w4v4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(56, 340)
+shape = SubResource("RectangleShape2D_vgbo1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+visible = false
+light_mask = 3
+z_index = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 100.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 96.0
+offset_bottom = 30.0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("2_sn1lu")
+theme_override_font_sizes/font_size = 7
+text = "It looks dark down there.."
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

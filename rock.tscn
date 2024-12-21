@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://bbmdnx82x8b30"]
+
+[ext_resource type="Script" path="res://rock.gd" id="1_akpyy"]
+[ext_resource type="Texture2D" uid="uid://rcbu5exidgq4" path="res://resources/rock.png" id="1_h0l8a"]
+[ext_resource type="Texture2D" uid="uid://05nwxdsuipqq" path="res://resources/rockroll.png" id="2_xfe7r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srxhc"]
+atlas = ExtResource("2_xfe7r")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtilq"]
+atlas = ExtResource("2_xfe7r")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc2tk"]
+atlas = ExtResource("2_xfe7r")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sufhl"]
+atlas = ExtResource("2_xfe7r")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3xrk"]
+atlas = ExtResource("2_xfe7r")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03miw"]
+atlas = ExtResource("2_xfe7r")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iddf7"]
+atlas = ExtResource("2_xfe7r")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nri0h"]
+atlas = ExtResource("2_xfe7r")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8q3ef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srxhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtilq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc2tk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sufhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3xrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03miw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iddf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nri0h")
+}],
+"loop": true,
+"name": &"rolling",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uumof"]
+radius = 8.0
+
+[node name="Rock" type="Node2D" groups=["pushable"]]
+script = ExtResource("1_akpyy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_h0l8a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_8q3ef")
+animation = &"rolling"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_uumof")

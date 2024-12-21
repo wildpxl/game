@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://diy0mf0nqc646"]
+
+[ext_resource type="Script" path="res://resources/pumpkin.gd" id="1_ousgd"]
+[ext_resource type="Texture2D" uid="uid://b5b5oq5b0ac1p" path="res://resources/pumpkin.png" id="1_vl4p1"]
+[ext_resource type="Script" path="res://scripts/item.gd" id="2_c2nop"]
+
+[sub_resource type="Resource" id="Resource_mrl17"]
+script = ExtResource("2_c2nop")
+name = "Pumpkin"
+description = "No description"
+icon = ExtResource("1_vl4p1")
+value = 0
+
+[resource]
+script = ExtResource("1_ousgd")
+pumpkin = SubResource("Resource_mrl17")

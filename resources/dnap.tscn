@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfustwclyg7j4"]
+
+[ext_resource type="Script" path="res://resources/dnap.gd" id="1_1ed61"]
+[ext_resource type="Texture2D" uid="uid://dkwbw80w8ts0d" path="res://resources/dnap.png" id="1_fjd35"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58383"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eu8uu"]
+radius = 14.0
+
+[node name="Node2D" type="Node2D" groups=["item"]]
+script = ExtResource("1_1ed61")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["item"]]
+texture_filter = 1
+texture = ExtResource("1_fjd35")
+
+[node name="Area2D" type="Area2D" parent="." groups=["item"]]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["item"]]
+shape = SubResource("CircleShape2D_58383")
+
+[node name="DetectionArea" type="Area2D" parent="." groups=["item"]]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" groups=["item"]]
+shape = SubResource("CircleShape2D_eu8uu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

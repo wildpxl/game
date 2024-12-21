@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://bije6ghqvemf1"]
+
+[ext_resource type="Texture2D" uid="uid://cxmr81i37105l" path="res://art/pumpkingrowsheet.png" id="1_ylms6"]
+[ext_resource type="Script" path="res://plant_sprite.gd" id="2_rpb4k"]
+[ext_resource type="FontFile" uid="uid://cyvd36htah376" path="res://art/FreePixel.ttf" id="3_sg14y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg788"]
+atlas = ExtResource("1_ylms6")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j287x"]
+atlas = ExtResource("1_ylms6")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dw2w"]
+atlas = ExtResource("1_ylms6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3odcp"]
+atlas = ExtResource("1_ylms6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twxqq"]
+atlas = ExtResource("1_ylms6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk82s"]
+atlas = ExtResource("1_ylms6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tc0ad"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pg788")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j287x")
+}],
+"loop": true,
+"name": &"flower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dw2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3odcp")
+}],
+"loop": true,
+"name": &"seed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twxqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk82s")
+}],
+"loop": true,
+"name": &"sprout",
+"speed": 5.0
+}]
+
+[node name="PlantSprite" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_tc0ad")
+animation = &"flower"
+script = ExtResource("2_rpb4k")
+
+[node name="GrowthProgressBar" type="ProgressBar" parent="."]
+texture_filter = 1
+offset_left = 10.0
+offset_top = -7.0
+offset_right = 14.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("3_sg14y")
+theme_override_font_sizes/font_size = 7
+
+[node name="GrowthTimer" type="Timer" parent="."]

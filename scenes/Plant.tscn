@@ -1,0 +1,167 @@
+[gd_scene load_steps=18 format=3 uid="uid://bn1yloxf2xvrk"]
+
+[ext_resource type="Script" path="res://scripts/plant.gd" id="1_n0umv"]
+[ext_resource type="Texture2D" uid="uid://cxmr81i37105l" path="res://art/pumpkingrowsheet.png" id="2_4vuso"]
+[ext_resource type="PackedScene" uid="uid://bg4c53asrebij" path="res://resources/pumpkin.tscn" id="2_76jju"]
+[ext_resource type="FontFile" uid="uid://cyvd36htah376" path="res://art/FreePixel.ttf" id="4_og32w"]
+[ext_resource type="Script" path="res://scenes/progress_bar.gd" id="5_g8tml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kan3t"]
+atlas = ExtResource("2_4vuso")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6fk8"]
+atlas = ExtResource("2_4vuso")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os31h"]
+atlas = ExtResource("2_4vuso")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxm4o"]
+atlas = ExtResource("2_4vuso")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fydg1"]
+atlas = ExtResource("2_4vuso")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4vi3"]
+atlas = ExtResource("2_4vuso")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yl1sj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kan3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6fk8")
+}],
+"loop": true,
+"name": &"flower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os31h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxm4o")
+}],
+"loop": true,
+"name": &"seed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fydg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4vi3")
+}],
+"loop": true,
+"name": &"sprout",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ku2gg"]
+resource_name = "Flower"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.049077, 1.08241, 2.14908, 3.13333, 4.03333, 5.06667, 6, 7.03333, 8.1, 9.08426, 9.98426, 11.0176, 12.0667, 13.1, 14.1667, 15.1509, 16.0509, 17.0843, 18.0667, 19.1, 20.1667, 21.1509, 22.0509, 23.0843, 24, 25.0333, 26.1, 27.0843, 27.9843, 29.0176, 30.0333, 31.0667, 32.1333, 33.1176, 34.0176, 35.0509, 36.0333, 37.0667, 38.1333, 39.1176, 40.0176, 41.0509, 42.0333, 43.0667, 44.1333, 45.1176, 46.0176, 47.0509, 48, 49.0333, 50.1, 51.0843, 51.9843, 53.0176, 53.9667, 55, 56.0667, 57.0509, 57.9509, 58.9843, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_ht1ii"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0jbcg"]
+resource_name = "Seed"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_43436"]
+resource_name = "Sprout"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.06667, 1.1, 2.06667, 3.16667, 4.03333, 5.13333, 6.1, 7.2, 8.03333, 9.13333, 10.1, 11.2, 12.0667, 13.1667, 14.1333, 15.2333, 16.1333, 17.2333, 18.2, 19.3, 20.1667, 21.2667, 22.2333, 23.3333, 24.1667, 25.2667, 26.2333, 27.3333, 28.2, 29.3, 30.2667, 31.3667, 32.3, 33.4, 34.3667, 35.4667, 36.3333, 37.4333, 38.4, 39.5, 40.3333, 41.4333, 42.4, 43.5, 44.3667, 45.4667, 46.4333, 47.5333, 48.5, 49.6, 50.5667, 51.6667, 52.5333, 53.6333, 54.6, 55.7, 56.5333, 57.6333, 58.6, 59.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ia5qt"]
+_data = {
+"Flower": SubResource("Animation_ku2gg"),
+"RESET": SubResource("Animation_ht1ii"),
+"Seed": SubResource("Animation_0jbcg"),
+"Sprout": SubResource("Animation_43436")
+}
+
+[node name="Plant" type="Node2D"]
+z_index = 2
+texture_filter = 1
+script = ExtResource("1_n0umv")
+pumpkin_scene = ExtResource("2_76jju")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_yl1sj")
+animation = &"seed"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 11.0
+offset_top = -17.0
+offset_right = 15.0
+offset_bottom = 7.0
+theme_override_fonts/font = ExtResource("4_og32w")
+theme_override_font_sizes/font_size = 8
+fill_mode = 3
+script = ExtResource("5_g8tml")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ia5qt")
+}

@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://bmyc8p7cvevkd"]
+
+[ext_resource type="Script" path="res://scripts/control.gd" id="1_57rnd"]
+[ext_resource type="Texture2D" uid="uid://byr5buyrvvkpa" path="res://art/menuBG1.png" id="2_12d43"]
+[ext_resource type="Texture2D" uid="uid://dpgs4e7dab88d" path="res://art/menubutton1.png" id="3_5mn2f"]
+[ext_resource type="Texture2D" uid="uid://dn22f8ui858vl" path="res://art/menuBG2.png" id="4_ni42o"]
+[ext_resource type="Texture2D" uid="uid://cxl6fep3dvuq0" path="res://art/menubutton2.png" id="5_kfihf"]
+
+[sub_resource type="Animation" id="Animation_heoyc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_12d43"), ExtResource("4_ni42o")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_5mn2f"), ExtResource("5_kfihf")]
+}
+
+[sub_resource type="Animation" id="Animation_5ft1n"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_12d43"), ExtResource("4_ni42o")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_5mn2f"), ExtResource("5_kfihf")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aevnu"]
+_data = {
+"RESET": SubResource("Animation_heoyc"),
+"idle": SubResource("Animation_5ft1n")
+}
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_57rnd")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_12d43")
+
+[node name="ButtonSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_5mn2f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aevnu")
+}
+
+[node name="ButtonPressTimer" type="Timer" parent="."]
+wait_time = 1.13
+one_shot = true
+
+[connection signal="item_rect_changed" from="." to="." method="_on_item_rect_changed"]
+[connection signal="size_flags_changed" from="." to="." method="_on_size_flags_changed"]
+[connection signal="hidden" from="ButtonSprite" to="." method="_on_button_sprite_hidden"]
+[connection signal="ready" from="ButtonSprite" to="." method="_on_button_sprite_ready"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="timeout" from="ButtonPressTimer" to="." method="_on_button_press_timer_timeout"]

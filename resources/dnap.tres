@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dogjvcawhu3pn"]
+
+[ext_resource type="Texture2D" uid="uid://dkwbw80w8ts0d" path="res://resources/dnap.png" id="1_l7l3m"]
+[ext_resource type="Script" path="res://scripts/item.gd" id="2_lmy3y"]
+
+[resource]
+script = ExtResource("2_lmy3y")
+name = "Pumpkin DNA"
+description = "collectible"
+icon = ExtResource("1_l7l3m")
+value = 0

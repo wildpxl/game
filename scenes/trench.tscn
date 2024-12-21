@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://xh71dvtbesth"]
+
+[ext_resource type="Script" path="res://scripts/trench.gd" id="1_xfxmq"]
+[ext_resource type="Texture2D" uid="uid://bede6pyfswcod" path="res://art/trench.png" id="2_mrk1a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrbe4"]
+atlas = ExtResource("2_mrk1a")
+region = Rect2(0, 0, 32, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl1cb"]
+atlas = ExtResource("2_mrk1a")
+region = Rect2(32, 0, 32, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpj1b"]
+atlas = ExtResource("2_mrk1a")
+region = Rect2(64, 0, 32, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nb822"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrbe4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl1cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpj1b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="trench" type="Node2D"]
+script = ExtResource("1_xfxmq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_nb822")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
+position = Vector2(0, -14)

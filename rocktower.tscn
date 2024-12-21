@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhb2d0d60ppy0"]
+
+[ext_resource type="Script" path="res://rocktower.gd" id="1_2i3nu"]
+[ext_resource type="Texture2D" uid="uid://b68a7ifuvjxy" path="res://resources/caves 4.png" id="1_vfeb7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfnmc"]
+atlas = ExtResource("1_vfeb7")
+region = Rect2(240, 576, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gqm0"]
+atlas = ExtResource("1_vfeb7")
+region = Rect2(288, 576, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rywmy"]
+atlas = ExtResource("1_vfeb7")
+region = Rect2(336, 576, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhrfh"]
+atlas = ExtResource("1_vfeb7")
+region = Rect2(384, 576, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b0d7"]
+atlas = ExtResource("1_vfeb7")
+region = Rect2(432, 576, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8hmgq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfnmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gqm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rywmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhrfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b0d7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="rocktower" type="Node2D"]
+script = ExtResource("1_2i3nu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_8hmgq")
+frame_progress = 0.741881
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]

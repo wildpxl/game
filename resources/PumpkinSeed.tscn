@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckpx41uow8pdm"]
+
+[ext_resource type="Texture2D" uid="uid://bqt16mwigm76x" path="res://resources/PumpkinSeed.png" id="1_im3nc"]
+[ext_resource type="Script" path="res://resources/pumpkin_seed.gd" id="1_ndmo6"]
+[ext_resource type="Resource" uid="uid://ba6072i8rugrm" path="res://resources/PumpkinSeed.tres" id="2_5v2y5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pysrx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bwq1o"]
+radius = 13.0384
+
+[node name="PumpkinSeed" type="Node2D" groups=["item"]]
+script = ExtResource("1_ndmo6")
+pumpkin_seed = ExtResource("2_5v2y5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["item"]]
+texture_filter = 1
+texture = ExtResource("1_im3nc")
+
+[node name="Area2D" type="Area2D" parent="." groups=["item"]]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["item"]]
+shape = SubResource("CircleShape2D_pysrx")
+
+[node name="DetectionArea" type="Area2D" parent="." groups=["item"]]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" groups=["item"]]
+shape = SubResource("CircleShape2D_bwq1o")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

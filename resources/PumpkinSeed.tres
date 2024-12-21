@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ba6072i8rugrm"]
+
+[ext_resource type="Texture2D" uid="uid://bqt16mwigm76x" path="res://resources/PumpkinSeed.png" id="1_626w5"]
+[ext_resource type="Script" path="res://scripts/item.gd" id="1_smb4l"]
+
+[resource]
+script = ExtResource("1_smb4l")
+name = "Pumpkin Seed"
+description = null
+icon = ExtResource("1_626w5")
+value = null
